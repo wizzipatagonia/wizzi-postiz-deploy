@@ -122,6 +122,10 @@ services:
     networks:
       - postiz-network
       - temporal-network
+    labels:
+      # Traefik (Coolify) debe alcanzar el backend por la red compartida del recurso,
+      # si no, con multiples redes elige una equivocada y la peticion se cuelga.
+      - traefik.docker.network=c47ug8346eky54ejvp6md36i
     depends_on:
       postiz-postgres:
         condition: service_healthy
