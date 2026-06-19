@@ -1,0 +1,14 @@
+# NUNCA subir secretos
+.env
+.env.local
+*.key
+*.pem
+
+# Datos / volúmenes locales
+uploads/
+config/
+postgres-data/
+
+# Sistema
+.DS_Store
+Thumbs.db
