@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad – Wizzi</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --accent: #0071e3;
+      --accent-light: #e8f1fb;
+      --border: rgba(0,0,0,0.08);
+      --radius: 18px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg); color: var(--text-primary);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,245,247,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px;
+    }
+    .nav-logo { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-badge { font-size: 0.72rem; font-weight: 500; color: var(--text-secondary); background: var(--border); padding: 3px 10px; border-radius: 20px; }
+    .hero { text-align: center; padding: 80px 24px 60px; max-width: 680px; margin: 0 auto; }
+    .hero-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(145deg, #0071e3, #34aadc);
+      border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 24px rgba(0,113,227,0.3);
+    }
+    .hero-icon svg { width: 32px; height: 32px; fill: white; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; }
+    .hero .updated { margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary); }
+    main { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+    .intro-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px 32px; margin-bottom: 16px;
+      border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .intro-card p { color: var(--text-secondary); font-size: 1rem; }
+    .intro-card a { color: var(--accent); text-decoration: none; }
+    .section-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px 32px; margin-bottom: 12px;
+      border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease;
+    }
+    .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .section-num {
+      display: inline-block; font-size: 0.72rem; font-weight: 600;
+      color: var(--accent); background: var(--accent-light);
+      padding: 3px 10px; border-radius: 20px;
+      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-card h2 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 12px; }
+    .section-card p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 10px; }
+    .section-card p:last-child { margin-bottom: 0; }
+    .section-card ul { list-style: none; padding: 0; margin-top: 6px; }
+    .section-card ul li {
+      font-size: 0.95rem; color: var(--text-secondary);
+      padding: 6px 0 6px 20px; position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-card ul li:last-child { border-bottom: none; }
+    .section-card ul li::before {
+      content: ''; position: absolute; left: 0; top: 14px;
+      width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+    }
+    .section-card a { color: var(--accent); text-decoration: none; }
+    .contact-card {
+      background: linear-gradient(135deg, #0071e3 0%, #34aadc 100%);
+      border-radius: var(--radius); padding: 32px; margin-top: 24px;
+      color: white; text-align: center;
+    }
+    .contact-card h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .contact-card p { font-size: 0.95rem; opacity: 0.85; margin-bottom: 20px; }
+    .contact-card a {
+      display: inline-block; background: white; color: var(--accent);
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      padding: 12px 28px; border-radius: 980px; transition: opacity 0.15s;
+    }
+    .contact-card a:hover { opacity: 0.88; }
+    footer { text-align: center; padding: 32px 24px; font-size: 0.82rem; color: var(--text-secondary); border-top: 1px solid var(--border); }
+    footer a { color: var(--text-secondary); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://postwiz.wizzi.com.ar">Wizzi</a>
+  <span class="nav-badge">Legal</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-icon">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/>
+    </svg>
+  </div>
+  <h1>Política de Privacidad</h1>
+  <p class="updated">Última actualización: 19 de junio de 2026</p>
+</section>
+
+<main>
+
+  <div class="intro-card">
+    <p>Esta Política de Privacidad describe cómo <strong>Wizzi</strong>, operado por Jesús Valentín Zeballos Dávalos y Fabrizio Ifran ("nosotros", "Wizzi"), recopila, usa y protege la información de sus clientes en el marco del servicio de automatización y gestión de publicaciones en redes sociales, operado a través de la herramienta interna <strong>PostWiz</strong>.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">01</span>
+    <h2>Quiénes somos y qué hacemos</h2>
+    <p>Wizzi es una empresa de servicios digitales que gestiona y automatiza publicaciones en redes sociales para sus clientes. Para ello utilizamos PostWiz, una herramienta de desarrollo propio que opera en nombre de los clientes sobre <strong>Instagram y Facebook</strong> —las principales plataformas de Meta— a través de sus APIs oficiales.</p>
+    <p>Los clientes no acceden ni operan PostWiz directamente: es Wizzi quien lo gestiona de forma interna.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">02</span>
+    <h2>Información que recopilamos de nuestros clientes</h2>
+    <ul>
+      <li><strong>Datos de contacto y negocio:</strong> nombre, razón social, correo electrónico y datos de contacto del cliente o su representante.</li>
+      <li><strong>Credenciales de acceso a redes sociales:</strong> tokens de acceso a Instagram y Facebook, otorgados por el cliente mediante el flujo OAuth oficial de Meta. No almacenamos contraseñas.</li>
+      <li><strong>Contenido editorial:</strong> textos, imágenes y metadatos de las publicaciones que el cliente nos encarga gestionar.</li>
+      <li><strong>Datos de rendimiento:</strong> métricas básicas de las publicaciones (alcance, interacciones) obtenidas a través de la API de Meta, usadas para reportes al cliente.</li>
+    </ul>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">03</span>
+    <h2>Cómo usamos la información</h2>
+    <ul>
+      <li>Ejecutar la programación y publicación de contenido en nombre del cliente.</li>
+      <li>Generar reportes de rendimiento y actividad.</li>
+      <li>Coordinar la operación interna del servicio (planificación editorial, comunicación con el cliente).</li>
+      <li>Cumplir obligaciones legales o responder a requerimientos de autoridades competentes.</li>
+    </ul>
+    <p style="margin-top:14px;">No vendemos, cedemos ni compartimos los datos de nuestros clientes con terceros, excepto cuando sea estrictamente necesario para prestar el servicio (ej. la propia API de Meta al publicar contenido).</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">04</span>
+    <h2>Uso de las APIs de Meta (Instagram y Facebook)</h2>
+    <p>PostWiz interactúa con Instagram y Facebook a través de las APIs oficiales de Meta. Los tokens de acceso que el cliente autoriza se utilizan exclusivamente para publicar y consultar métricas en sus cuentas. Wizzi no los comparte con ninguna parte externa. El cliente puede revocar este acceso en cualquier momento desde su configuración de Meta, o solicitándolo a Wizzi directamente.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">05</span>
+    <h2>Almacenamiento y seguridad</h2>
+    <p>Los datos se almacenan en servidores seguros con controles de acceso estrictos. Aplicamos medidas técnicas y organizativas razonables —incluyendo cifrado en tránsito y en reposo— para proteger la información contra accesos no autorizados, pérdida o alteración.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">06</span>
+    <h2>Retención de datos</h2>
+    <p>Conservamos los datos del cliente mientras dure la relación de servicio activa. Una vez finalizado el vínculo, eliminamos o anonimizamos los datos personales dentro de los 30 días hábiles siguientes, salvo obligación legal de conservarlos por más tiempo (ej. registros de facturación).</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">07</span>
+    <h2>Derechos del cliente sobre sus datos</h2>
+    <p>El cliente tiene derecho a acceder, rectificar, exportar o solicitar la eliminación de sus datos en cualquier momento. Para ejercer estos derechos, basta con contactarnos por correo. Procesamos la solicitud dentro de los 30 días hábiles.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">08</span>
+    <h2>Cambios a esta política</h2>
+    <p>Podemos actualizar esta Política. Notificaremos cambios relevantes a los clientes activos por correo electrónico. El uso continuado del servicio tras la notificación implica la aceptación de los cambios.</p>
+  </div>
+
+  <div class="contact-card">
+    <h2>¿Preguntas sobre privacidad?</h2>
+    <p>Respondemos dentro de los 30 días hábiles.</p>
+    <a href="mailto:privacidad@wizzi.com.ar">privacidad@wizzi.com.ar</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Wizzi &mdash; <a href="/terms">Términos</a> &middot; <a href="/privacy">Privacidad</a> &middot; <a href="/data-deletion">Eliminación de datos</a></p>
+</footer>
+
+</body>
+</html>

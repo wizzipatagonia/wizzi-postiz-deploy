@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliminación de Datos – Wizzi</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5f5f7; --surface: #ffffff;
+      --text-primary: #1d1d1f; --text-secondary: #6e6e73;
+      --accent: #0071e3; --accent-light: #e8f1fb;
+      --border: rgba(0,0,0,0.08); --radius: 18px;
+      --green: #30d158; --green-bg: #edfbf0;
+      --red: #ff3b30; --red-bg: #fff0ef;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg); color: var(--text-primary);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,245,247,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px;
+    }
+    .nav-logo { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-badge { font-size: 0.72rem; font-weight: 500; color: var(--text-secondary); background: var(--border); padding: 3px 10px; border-radius: 20px; }
+    .hero { text-align: center; padding: 80px 24px 60px; max-width: 680px; margin: 0 auto; }
+    .hero-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(145deg, #ff3b30, #ff6b6b);
+      border-radius: 18px; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; box-shadow: 0 8px 24px rgba(255,59,48,0.3);
+    }
+    .hero-icon svg { width: 32px; height: 32px; fill: white; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; }
+    .hero .updated { margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary); }
+    main { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+    .intro-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px 32px; margin-bottom: 16px;
+      border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .intro-card p { color: var(--text-secondary); font-size: 1rem; }
+    .intro-card a { color: var(--accent); text-decoration: none; }
+
+    /* DATA GRID */
+    .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .data-item {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 20px 22px; border: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .data-item-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .data-item h3 { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+    .data-item p { font-size: 0.82rem; color: var(--text-secondary); }
+
+    .section-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px 32px; margin-bottom: 12px;
+      border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease;
+    }
+    .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .section-label {
+      display: inline-block; font-size: 0.72rem; font-weight: 600;
+      color: var(--red); background: var(--red-bg);
+      padding: 3px 10px; border-radius: 20px;
+      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-label.green { color: var(--green); background: var(--green-bg); }
+    .section-label.blue { color: var(--accent); background: var(--accent-light); }
+    .section-label.grey { color: #8e8e93; background: #f0f0f0; }
+    .section-card h2 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .section-card p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 10px; }
+    .section-card p:last-child { margin-bottom: 0; }
+    .section-card a { color: var(--accent); text-decoration: none; }
+
+    /* STEPS */
+    .steps { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    .steps li { display: flex; gap: 14px; align-items: flex-start; padding: 12px 16px; background: var(--bg); border-radius: 10px; }
+    .step-num {
+      flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+      color: white; font-size: 0.75rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .steps li p { font-size: 0.93rem; color: var(--text-secondary); margin: 0; line-height: 1.5; padding-top: 2px; }
+
+    /* OUTCOME */
+    .outcome-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .outcome-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.93rem; color: var(--text-secondary); }
+    .check { color: var(--green); font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+    .contact-card {
+      background: linear-gradient(135deg, #ff3b30 0%, #ff6b6b 100%);
+      border-radius: var(--radius); padding: 32px; margin-top: 24px;
+      color: white; text-align: center;
+    }
+    .contact-card h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .contact-card p { font-size: 0.95rem; opacity: 0.85; margin-bottom: 20px; }
+    .contact-card a {
+      display: inline-block; background: white; color: var(--red);
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      padding: 12px 28px; border-radius: 980px; transition: opacity 0.15s;
+    }
+    .contact-card a:hover { opacity: 0.88; }
+    footer { text-align: center; padding: 32px 24px; font-size: 0.82rem; color: var(--text-secondary); border-top: 1px solid var(--border); }
+    footer a { color: var(--text-secondary); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://postwiz.wizzi.com.ar">Wizzi</a>
+  <span class="nav-badge">Legal</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-icon">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 7l-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3M4 7h16"/>
+    </svg>
+  </div>
+  <h1>Eliminación de Datos</h1>
+  <p class="updated">Última actualización: 19 de junio de 2026</p>
+</section>
+
+<main>
+
+  <div class="intro-card">
+    <p>Esta página explica qué datos gestiona <strong>Wizzi</strong> en el marco de su servicio de automatización de publicaciones, y cómo los clientes pueden solicitar su eliminación completa de los sistemas de Wizzi y de la herramienta interna PostWiz.</p>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-item">
+      <div class="data-item-icon">🏢</div>
+      <h3>Datos del cliente</h3>
+      <p>Nombre, razón social y correo de contacto del cliente o su representante.</p>
+    </div>
+    <div class="data-item">
+      <div class="data-item-icon">🔑</div>
+      <h3>Tokens de acceso</h3>
+      <p>Tokens OAuth de Instagram y Facebook usados para publicar en nombre del cliente.</p>
+    </div>
+    <div class="data-item">
+      <div class="data-item-icon">📅</div>
+      <h3>Contenido editorial</h3>
+      <p>Publicaciones programadas, historial de posteos y materiales provistos por el cliente.</p>
+    </div>
+    <div class="data-item">
+      <div class="data-item-icon">📊</div>
+      <h3>Métricas</h3>
+      <p>Datos de rendimiento de publicaciones obtenidos vía API de Meta para reportes.</p>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <span class="section-label green">Opción 1 — Recomendada</span>
+    <h2>Solicitar eliminación directamente a Wizzi</h2>
+    <p>Como el cliente no opera PostWiz directamente, la forma más simple es contactar al equipo:</p>
+    <ol class="steps">
+      <li>
+        <span class="step-num" style="background:#30d158;">1</span>
+        <p>Enviá un email a <a href="mailto:privacidad@wizzi.com.ar">privacidad@wizzi.com.ar</a> con el asunto <strong>"Solicitud de eliminación de datos"</strong>.</p>
+      </li>
+      <li>
+        <span class="step-num" style="background:#30d158;">2</span>
+        <p>Incluí el nombre de tu empresa y el correo con el que te identificamos como cliente.</p>
+      </li>
+      <li>
+        <span class="step-num" style="background:#30d158;">3</span>
+        <p>Wizzi procesará la solicitud dentro de los <strong>30 días hábiles</strong> y te confirmará por correo cuando esté completa.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="section-card">
+    <span class="section-label blue">Opción 2 — Acceso Meta</span>
+    <h2>Revocar acceso a tus cuentas de Instagram y Facebook</h2>
+    <p>Si querés retirar el acceso de PostWiz a tus cuentas de Instagram o Facebook de forma inmediata, podés hacerlo directamente desde Meta sin esperar:</p>
+    <ol class="steps">
+      <li>
+        <span class="step-num" style="background:#0071e3;">1</span>
+        <p>Andá a <a href="https://www.facebook.com/settings?tab=applications" target="_blank" rel="noopener">Configuración de Facebook → Aplicaciones y sitios web</a>.</p>
+      </li>
+      <li>
+        <span class="step-num" style="background:#0071e3;">2</span>
+        <p>Buscá <strong>PostWiz</strong> en la lista y hacé clic en <strong>"Eliminar"</strong>.</p>
+      </li>
+    </ol>
+    <p style="margin-top:14px;">Esto revoca el token de acceso de forma inmediata. Te recomendamos además notificar a Wizzi para que detengamos la operación y eliminemos el resto de tus datos del sistema.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-label grey">Al finalizar el servicio</span>
+    <h2>Qué ocurre cuando termina la relación con Wizzi</h2>
+    <ul class="outcome-list">
+      <li><span class="check">✓</span> Wizzi revoca todos los accesos a las cuentas del cliente inmediatamente.</li>
+      <li><span class="check">✓</span> Los datos personales del cliente (contacto, tokens) son eliminados dentro de los 30 días hábiles.</li>
+      <li><span class="check">✓</span> El contenido editorial y el historial de publicaciones son eliminados o anonimizados.</li>
+      <li><span class="check">✓</span> Algunos registros pueden retenerse el tiempo que exija la ley (ej. facturación).</li>
+      <li><span class="check">✓</span> El cliente recibe confirmación por correo cuando el proceso está completo.</li>
+    </ul>
+  </div>
+
+  <div class="contact-card">
+    <h2>¿Necesitás eliminar tus datos?</h2>
+    <p>Escribinos y lo gestionamos dentro de los 30 días hábiles.</p>
+    <a href="mailto:privacidad@wizzi.com.ar">privacidad@wizzi.com.ar</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Wizzi &mdash; <a href="/terms">Términos</a> &middot; <a href="/privacy">Privacidad</a> &middot; <a href="/data-deletion">Eliminación de datos</a></p>
+</footer>
+
+</body>
+</html>

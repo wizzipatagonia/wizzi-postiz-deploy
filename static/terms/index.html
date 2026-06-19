@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Condiciones del Servicio – Wizzi</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5f5f7; --surface: #ffffff;
+      --text-primary: #1d1d1f; --text-secondary: #6e6e73;
+      --accent: #5856d6; --accent-light: #f0effe;
+      --border: rgba(0,0,0,0.08); --radius: 18px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg); color: var(--text-primary);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245,245,247,0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px;
+    }
+    .nav-logo { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-badge { font-size: 0.72rem; font-weight: 500; color: var(--text-secondary); background: var(--border); padding: 3px 10px; border-radius: 20px; }
+    .hero { text-align: center; padding: 80px 24px 60px; max-width: 680px; margin: 0 auto; }
+    .hero-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(145deg, #5856d6, #af52de);
+      border-radius: 18px; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; box-shadow: 0 8px 24px rgba(88,86,214,0.3);
+    }
+    .hero-icon svg { width: 32px; height: 32px; fill: white; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; }
+    .hero .updated { margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary); }
+    main { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+    .intro-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px 32px; margin-bottom: 16px;
+      border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .intro-card p { color: var(--text-secondary); font-size: 1rem; }
+    .section-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px 32px; margin-bottom: 12px;
+      border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease;
+    }
+    .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .section-num {
+      display: inline-block; font-size: 0.72rem; font-weight: 600;
+      color: var(--accent); background: var(--accent-light);
+      padding: 3px 10px; border-radius: 20px;
+      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-card h2 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .section-card p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 10px; }
+    .section-card p:last-child { margin-bottom: 0; }
+    .section-card ul { list-style: none; padding: 0; margin-top: 6px; }
+    .section-card ul li {
+      font-size: 0.95rem; color: var(--text-secondary);
+      padding: 6px 0 6px 20px; position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-card ul li:last-child { border-bottom: none; }
+    .section-card ul li::before {
+      content: ''; position: absolute; left: 0; top: 14px;
+      width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+    }
+    .section-card a { color: var(--accent); text-decoration: none; }
+    .contact-card {
+      background: linear-gradient(135deg, #5856d6 0%, #af52de 100%);
+      border-radius: var(--radius); padding: 32px; margin-top: 24px;
+      color: white; text-align: center;
+    }
+    .contact-card h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .contact-card p { font-size: 0.95rem; opacity: 0.85; margin-bottom: 20px; }
+    .contact-card a {
+      display: inline-block; background: white; color: #5856d6;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      padding: 12px 28px; border-radius: 980px; transition: opacity 0.15s;
+    }
+    .contact-card a:hover { opacity: 0.88; }
+    footer { text-align: center; padding: 32px 24px; font-size: 0.82rem; color: var(--text-secondary); border-top: 1px solid var(--border); }
+    footer a { color: var(--text-secondary); text-decoration: none; }
+    footer a:hover { color: #5856d6; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://postwiz.wizzi.com.ar">Wizzi</a>
+  <span class="nav-badge">Legal</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-icon">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622C17.176 19.29 21 14.591 21 9c0-1.067-.143-2.1-.382-3.016z"/>
+    </svg>
+  </div>
+  <h1>Condiciones del Servicio</h1>
+  <p class="updated">Última actualización: 19 de junio de 2026</p>
+</section>
+
+<main>
+
+  <div class="intro-card">
+    <p>Las presentes Condiciones regulan la prestación del servicio de gestión y automatización de publicaciones en redes sociales que <strong>Wizzi</strong> —operado por Jesús Valentín Zeballos Dávalos y Fabrizio Ifran— brinda a sus clientes. Al contratar el servicio, el cliente acepta estas Condiciones en su totalidad.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">01</span>
+    <h2>Descripción del servicio</h2>
+    <p>Wizzi ofrece un servicio de automatización y gestión de publicaciones en redes sociales para empresas y marcas. A través de su herramienta interna PostWiz, Wizzi planifica, crea y publica contenido en <strong>Instagram y Facebook</strong> —las principales plataformas de Meta— mediante sus APIs oficiales.</p>
+    <p>PostWiz es una herramienta de uso interno de Wizzi. El cliente no accede ni opera la plataforma directamente.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">02</span>
+    <h2>Alcance y autorización del cliente</h2>
+    <p>Al contratar el servicio, el cliente autoriza expresamente a Wizzi a:</p>
+    <ul>
+      <li>Acceder a sus cuentas de redes sociales a través de los mecanismos oficiales de autenticación (OAuth) de cada plataforma.</li>
+      <li>Publicar, programar y gestionar contenido en su nombre según el plan editorial acordado.</li>
+      <li>Consultar métricas básicas de rendimiento de las publicaciones para la elaboración de reportes.</li>
+    </ul>
+    <p style="margin-top:14px;">Wizzi opera siempre dentro del alcance de los permisos que el cliente otorga y no realiza acciones fuera del marco acordado.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">03</span>
+    <h2>Responsabilidades del cliente</h2>
+    <ul>
+      <li>Proveer a Wizzi acceso válido a las cuentas de redes sociales necesarias para prestar el servicio.</li>
+      <li>Aprobar y/o proveer el contenido editorial (textos, imágenes, directrices de marca) dentro de los plazos acordados.</li>
+      <li>Garantizar que el contenido que encarga publicar cumple con las políticas de Meta (Instagram y Facebook) y con la normativa vigente.</li>
+      <li>Notificar a Wizzi cualquier cambio en credenciales o accesos que afecte la prestación del servicio.</li>
+    </ul>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">04</span>
+    <h2>Responsabilidades de Wizzi</h2>
+    <ul>
+      <li>Ejecutar la gestión de publicaciones con diligencia y conforme al plan editorial acordado.</li>
+      <li>Mantener la confidencialidad de los accesos y datos del cliente.</li>
+      <li>Informar al cliente ante cualquier incidencia que afecte la publicación de su contenido.</li>
+      <li>No utilizar los accesos del cliente para fines distintos al servicio contratado.</li>
+    </ul>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">05</span>
+    <h2>Integraciones con terceros</h2>
+    <p>El servicio depende de las plataformas de Meta —Instagram y Facebook— que tienen sus propias condiciones de uso y pueden modificar o restringir sus APIs en cualquier momento. Wizzi no es responsable por interrupciones, cambios de política o limitaciones impuestas por Meta que afecten la prestación del servicio.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">06</span>
+    <h2>Propiedad del contenido</h2>
+    <p>El contenido editorial (textos, imágenes, materiales de marca) es y seguirá siendo propiedad del cliente. Wizzi cuenta con una licencia limitada para usarlo exclusivamente con el fin de prestar el servicio contratado. Al finalizar el vínculo, Wizzi no conservará copias del contenido del cliente más allá del plazo de retención establecido en la Política de Privacidad.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">07</span>
+    <h2>Propiedad intelectual de Wizzi</h2>
+    <p>PostWiz y todos los desarrollos, metodologías, herramientas y activos tecnológicos creados por Wizzi son propiedad exclusiva de Jesús Valentín Zeballos Dávalos y Fabrizio Ifran. El cliente no adquiere ningún derecho sobre ellos al contratar el servicio.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">08</span>
+    <h2>Limitación de responsabilidad</h2>
+    <p>En la máxima medida permitida por la ley, Wizzi no será responsable por daños indirectos, incidentales o consecuentes derivados de interrupciones del servicio causadas por terceros (plataformas de redes sociales, proveedores de infraestructura, etc.), cambios en las APIs de Meta u otras plataformas, o por contenido publicado a partir de materiales aprobados o provistos por el cliente.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">09</span>
+    <h2>Modificaciones y terminación</h2>
+    <p>Cualquiera de las partes puede dar por finalizado el servicio con un preaviso razonable. Al terminar la relación, Wizzi revocará todos los accesos a las cuentas del cliente y procederá a eliminar sus datos según lo establecido en la Política de Privacidad.</p>
+    <p>Wizzi puede actualizar estas Condiciones y notificará los cambios relevantes a los clientes activos por correo electrónico.</p>
+  </div>
+
+  <div class="section-card">
+    <span class="section-num">10</span>
+    <h2>Ley aplicable</h2>
+    <p>Estas Condiciones se rigen por las leyes de la República Argentina. Cualquier disputa se someterá a los tribunales competentes de la Ciudad Autónoma de Buenos Aires.</p>
+  </div>
+
+  <div class="contact-card">
+    <h2>¿Consultas sobre el servicio?</h2>
+    <p>Escribinos y te respondemos a la brevedad.</p>
+    <a href="mailto:contacto@wizzi.com.ar">contacto@wizzi.com.ar</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Wizzi &mdash; <a href="/terms">Términos</a> &middot; <a href="/privacy">Privacidad</a> &middot; <a href="/data-deletion">Eliminación de datos</a></p>
+</footer>
+
+</body>
+</html>

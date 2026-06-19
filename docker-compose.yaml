@@ -116,6 +116,10 @@ services:
     volumes:
       - /opt/postiz/docker-patches/instagram.provider.js:/app/apps/backend/dist/libraries/nestjs-libraries/src/integrations/social/instagram.provider.js:ro
       - /opt/postiz/docker-patches/instagram.provider.js:/app/apps/orchestrator/dist/libraries/nestjs-libraries/src/integrations/social/instagram.provider.js:ro
+      # Paginas legales estaticas (servidas por Next.js desde public/)
+      - /opt/postiz/static/privacy:/app/apps/frontend/public/privacy:ro
+      - /opt/postiz/static/terms:/app/apps/frontend/public/terms:ro
+      - /opt/postiz/static/data-deletion:/app/apps/frontend/public/data-deletion:ro
       - postiz-config:/config/
       - postiz-uploads:/uploads/
     ports:
