@@ -85,7 +85,8 @@ services:
       # SENTRY_SPOTLIGHT: '1'
 
       # === Misc Settings
-      OPENAI_API_KEY: ''
+      OPENAI_API_KEY: '${OPENAI_API_KEY:-}'
+      TAVILY_API_KEY: '${TAVILY_API_KEY:-}'
       NEXT_PUBLIC_DISCORD_SUPPORT: ''
       NEXT_PUBLIC_POLOTNO: ''
       API_LIMIT: 30
