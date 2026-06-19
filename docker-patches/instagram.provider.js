@@ -22,6 +22,7 @@ let InstagramProvider = class InstagramProvider extends social_abstract_1.Social
             'pages_read_engagement',
             'business_management',
             'instagram_content_publish',
+            'instagram_manage_insights',
         ];
         this.maxConcurrentJob = 400;
         this.editor = 'normal';
