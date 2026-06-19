@@ -113,8 +113,8 @@ services:
       # LINK_DRIP_SHORT_LINK_DOMAIN: "dripl.ink"
 
     volumes:
-      - ./docker-patches/instagram.provider.js:/app/apps/backend/dist/libraries/nestjs-libraries/src/integrations/social/instagram.provider.js:ro
-      - ./docker-patches/instagram.provider.js:/app/apps/orchestrator/dist/libraries/nestjs-libraries/src/integrations/social/instagram.provider.js:ro
+      - /opt/postiz/docker-patches/instagram.provider.js:/app/apps/backend/dist/libraries/nestjs-libraries/src/integrations/social/instagram.provider.js:ro
+      - /opt/postiz/docker-patches/instagram.provider.js:/app/apps/orchestrator/dist/libraries/nestjs-libraries/src/integrations/social/instagram.provider.js:ro
       - postiz-config:/config/
       - postiz-uploads:/uploads/
     ports:
@@ -215,7 +215,7 @@ services:
     networks:
       - temporal-network
     volumes:
-      - ./dynamicconfig:/etc/temporal/config/dynamicconfig
+      - /opt/postiz/dynamicconfig:/etc/temporal/config/dynamicconfig
     labels:
       kompose.volume.type: configMap
     healthcheck:
